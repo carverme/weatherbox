@@ -1,0 +1,36 @@
+{
+  "name": "weatherbox",
+  "version": "1.0.0",
+  "description": "A weather app, interface for a weather unit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carverme/weatherbox.git"
+  },
+  "keywords": [
+    "weatherbox"
+  ],
+  "author": "Matt Carver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carverme/weatherbox/issues"
+  },
+  "homepage": "https://github.com/carverme/weatherbox#readme"
+}
