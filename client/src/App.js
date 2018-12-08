@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import axios from 'axios';
 import Login from './Login';
 import Signup from './Signup';
 import {UserProfile} from './UserProfile';
-// import MenuAppBar from '@material-ui/core/MenuAppBar';
+import MenuAppBar from './MenuAppBar';
+
 
 class App extends Component {
   constructor(props) {
@@ -13,10 +13,11 @@ class App extends Component {
       this.state = {
         token: '',
         user: null
+        //set additional state if needed
       }
-      this.checkForLocalToken = this.checkForLocalToken.bind(this)
-      this.logout = this.logout.bind(this)
       this.liftTokenToState = this.liftTokenToState.bind(this)
+      this.logout = this.logout.bind(this)
+      this.checkForLocalToken = this.checkForLocalToken.bind(this)
     }
 
     liftTokenToState(data) {
@@ -39,7 +40,7 @@ class App extends Component {
     checkForLocalToken() {
       //Look in local storage for the token.
       let token = localStorage.getItem('mernToken')
-      if (!token) {
+      if (!token || token === 'undefined') {
         // there was no token.
         localStorage.removeItem('mernToken')
         this.setState({
@@ -64,15 +65,20 @@ class App extends Component {
 
   componentDidMount() {
     this.checkForLocalToken()
+    //is this where to add axios call to weather api?
   }
 
     render() {
       let user = this.state.user
       if (user) {
         return (
-          <div className="App">
-            <UserProfile user={user} logout={this.logout} />
-          </div>
+          <Router>
+            <div className="App">
+              <UserProfile user={user} logout={this.logout} />
+              //build this userprofile into the MenuAppBar?
+              //add additional routes here.
+            </div>
+          </Router>
       );
     } else {
       return (
